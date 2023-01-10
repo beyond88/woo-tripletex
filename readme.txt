@@ -8,6 +8,6 @@ Stable tag: 1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-A WooCommerce plugin for Tripletex.
+A WooCommerce plugin for Tripletex. When a customer make an order then the order will sync with Tripletex system. Easily can import/export order, products, customer information to Tripletex and vice versa. 
 
 == Description ==
