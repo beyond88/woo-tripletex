@@ -1,0 +1,48 @@
+<?php
+
+use Faker\Factory;
+use Woo_Tripletex\API\Handler\Product;
+use Woo_Tripletex\API\Handler\OrderLine;
+use Woo_Tripletex\API\Handler\Order;
+use Woo_Tripletex\API\Handler\Customer;
+
+require(dirname(__FILE__) . '/../../../wp-config.php');
+
+require './vendor/autoload.php';
+
+$order = new Order();
+$customerClass = new Customer();
+$orderLineClass = new OrderLine();
+$productClass = new Product();
+
+$faker = Factory::create();
+
+$customer = [
+    'isPrivateIndividual' => true,
+    'name' => $faker->name,
+    'email' => $faker->email,
+];
+
+$products[] = [
+        'name' => $faker->name,
+        'number' => $faker->randomNumber(),
+        'description' => $faker->sentence,
+        'isInactive' => false,
+        'priceIncludingVatCurrency' => $faker->randomFloat(),
+];
+
+foreach ($products as $product) {
+    $response = $productClass->create($product);
+    $product = json_decode($response, true)['value'];
+    $orderLines[] = [
+        'product' => $product,
+        'isSubscription' => false
+    ];
+}
+
+$customer = $customerClass->create($customer);
+$customer = json_decode($customer, true)['value'];
+
+$order->setCustomer($customer)
+    ->setOrderLines($orderLines)
+    ->create();

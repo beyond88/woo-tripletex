@@ -1,0 +1,37 @@
+{
+  "name": "beyond88/woo-tripletex",
+  "type": "wordpress-plugin",
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "mohiuddin",
+      "email": "muhin.cse.diu@gmail.com"
+    },
+    {
+      "name": "emtiazzahid",
+      "email": "emtiaz@getonnet.agency"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "classmap": [
+      "includes"
+    ],
+    "psr-4": {
+      "Woo_Tripletex\\": "includes/"
+    },
+    "files": [
+      "includes/functions.php"
+    ]
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.0",
+    "larapack/dd": "1.*"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "1.9.x-dev"
+  },
+  "config": {
+    "platform-check": false
+  }
+}
